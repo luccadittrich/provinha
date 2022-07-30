@@ -1,38 +1,44 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-12 col-md-6 col-lg-4">
-      <h2>Cadastro</h2>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= f.error_notification %>
-        <div class="form-inputs">
-          <%= f.input :nome_completo,
+      <div class="devise-page">
+        <h2>Cadastro</h2>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :nome_completo,
                 autofocus: true,
                 input_html: { autocomplete: "Nome completo" } %>
-          <div class="d-flex justify-content-around">
-            <%= f.input :professor,
-               autofocus: true,
+            <div class="d-flex justify-content-around">
+              <%= f.input :professor,
+               autofocus: false,
                input_html: { autocomplete: "Professor?" } %>
-            <%= f.input :presidente_da_classe,
-               autofocus: true,
+              <%= f.input :presidente_da_classe,
+               autofocus: false,
                input_html: { autocomplete: "Presidente da classe?" } %>
-          </div>
-          <%= f.input :email,
+            </div>
+            <%= f.input :photo,
+                as: :file,
+                label: "Foto" %>
+            <%= f.input :email,
                 required: true,
                 input_html: { autocomplete: "email" }%>
-          <%= f.input :photo, as: :file %>
-          <%= f.input :password,
+            <%= f.input :password,
+                label: "Senha",
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
-          <%= f.input :password_confirmation,
+            <%= f.input :password_confirmation,
+                label: "Confirme sua senha",
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+          </div>
         </div>
-        <div class="form-actions">
-          <%= f.button :submit, "Sign up" %>
+        <div class="form-actions d-flex mt-3">
+          <%= f.button :submit, "Criar conta", class: "w-100 m-1 btn btn-success", style: "color: #fff" %>
+          <%= render "devise/shared/links" %>
         </div>
       <% end %>
-      <%= render "devise/shared/links" %>
     </div>
   </div>
 </div>
