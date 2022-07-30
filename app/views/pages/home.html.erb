@@ -1,2 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h3><%= "Conteudo da semana" %></h3>
+<% if current_user.professor %>
+  <p>Adicionar Conteudo</p>
+  <%# simple_form_for @post do |f| %>
+    <%#= f.input %>
+  <%# end %>
+  <p>Fazer questionário</p>
+  <p>Corrigir</p>
+<% end %>
+<h3><%= link_to"Fazer provinha", "#" unless current_user.professor %></h3>
