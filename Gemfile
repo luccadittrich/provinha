@@ -67,3 +67,4 @@ gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem "simple_form", github: "heartcombo/simple_form"
 gem 'cloudinary'
+gem 'i18n', '~> 1.9'
