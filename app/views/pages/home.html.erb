@@ -1,10 +1,33 @@
-<h3><%= "Conteudo da semana" %></h3>
-<% if current_user.professor %>
-  <p>Adicionar Conteúdo</p>
-  <%# simple_form_for @post do |f| %>
-    <%#= f.input %>
-  <%# end %>
-  <p>Fazer questionário</p>
-  <p>Corrigir</p>
-<% end %>
-<h3><%= link_to"Fazer provinha", "#" unless current_user.professor %></h3>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <h3><%= "Conteudo da semana" %></h3>
+      <% if current_user.professor %>
+        <%= link_to 'Adicionar Conteúdo', new_post_path  %>
+        <p>Corrigir</p>
+      <% end %>
+      <p>Questionários</p>
+      <table>
+        <th>Semana</th>
+        <th>Questionário</th>
+        <th>Opções</th>
+        <% i = 1 %>
+        <% 14.times do %>
+          <tr>
+            <td><%= i += 1 %></td>
+            <td><%= link_to "Questionário #{i}", "#" %></td>
+            <% if current_user.professor %>
+              <td>
+                <i class="fas fa-unlock-alt"></i></i>
+              <i class="fas fa-lock"></i>
+              <i class="fas fa-edit"></i>
+            </td>
+          <% else %>
+            <td><button class="btn btn-primary">Entrar</button></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+</div>

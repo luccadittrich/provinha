@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2022_07_30_124243) do
     t.string "nome_completo"
     t.boolean "professor"
     t.boolean "presidente_da_classe"
-    t.string "avatar"
+    t.integer "score"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
