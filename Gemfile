@@ -66,5 +66,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem "simple_form", github: "heartcombo/simple_form"
-gem 'cloudinary'
+gem 'cloudinary', '~> 1.23.0'
 gem 'i18n', '~> 1.9'
