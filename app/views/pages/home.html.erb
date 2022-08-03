@@ -16,18 +16,18 @@
           <tr>
             <td><%= i += 1 %></td>
             <td><%= link_to "Questionário #{i}", "#" %></td>
-            <% if current_user.professor %>
-              <td>
+            <td>
+              <% if current_user.professor %>
                 <i class="fas fa-unlock-alt"></i></i>
-              <i class="fas fa-lock"></i>
-              <i class="fas fa-edit"></i>
+                <i class="fas fa-lock"></i>
+                <i class="fas fa-edit"></i>
+              <% else %>
+                <button class="btn btn-primary">Entrar</button>
+              <% end %>
             </td>
-          <% else %>
-            <td><button class="btn btn-primary">Entrar</button></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </table>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
-</div>
 </div>
