@@ -1,25 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4">
-      <p>teste1</p>
-      <% simple_form_for @post do |f| %>
-        <p>teste2</p>
-        <%= f.input :content, label: false, placeholder: 'Escreva algo sobre o evento', input_html: {class: 'ps-3 '} %>
+      <%= simple_form_for @post do |f| %>
+        <%= f.input :content, label: false, placeholder: '', input_html: {class: 'ps-3 '} %>
         <%= f.input :files, label: false, as: :file, input_html: { multiple: true, class: "d-none" } %>
         <%= f.submit 'Enviar', class: 'btn btn-primary' %>
       <% end %>
 
-      <%# p = Post.new %>
-      <%# p.content = "blablabla" %>
-      <%# p.save %>
-      <%#= p.content %>
 
+      <%= render 'shared/footer' %>
 
-      <footer class="bottom-icons">
-        <%= link_to :back do %>
-          <i class="fas fa-arrow-circle-left fa-3x"></i>
-        <% end %>
-      </footer>
     </div>
   </div>
 </div>

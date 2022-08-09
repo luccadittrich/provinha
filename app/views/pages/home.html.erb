@@ -2,32 +2,38 @@
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4">
       <h3><%= "Conteudo da semana" %></h3>
-      <% if current_user.professor %>
-        <%= link_to 'Adicionar Conteúdo', new_post_path  %>
-        <p>Corrigir</p>
-      <% end %>
-      <p>Questionários</p>
+      <%= link_to 'Adicionar Conteúdo', new_post_path if current_user.professor %>
+      <h3>Questionários</h3>
       <table>
         <th>Semana</th>
         <th>Questionário</th>
         <th>Opções</th>
         <% i = 1 %>
-        <% 14.times do %>
-          <tr>
-            <td><%= i += 1 %></td>
-            <td><%= link_to "Questionário #{i}", "#" %></td>
-            <td>
-              <% if current_user.professor %>
-                <i class="fas fa-unlock-alt"></i></i>
-                <i class="fas fa-lock"></i>
-                <i class="fas fa-edit"></i>
-              <% else %>
-                <button class="btn btn-primary">Entrar</button>
-              <% end %>
-            </td>
-          </tr>
+        <% if @test.present? %>
+          <% @test.each do |t| %>
+            <tr>
+              <td><%= i += 1 %></td>
+              <td><%= link_to "QUESTIONÁRIO", test_path(t) %></td>
+              <td>
+                <% if current_user.professor %>
+                  <i class="fas fa-unlock-alt"></i>
+                  <i class="fas fa-lock"></i>
+                  <%= link_to edit_test_path(t) do %>
+                    <i class="fas fa-edit"></i>
+                  <% end %>
+                <% else %>
+                  <button class="btn btn-primary">Entrar</button>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
       </table>
+      <% if current_user.professor %>
+        <%= link_to new_test_path do %>
+          <i class="fas fa-plus-circle fa-2x p-2"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
