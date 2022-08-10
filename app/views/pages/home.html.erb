@@ -2,10 +2,9 @@
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4">
       <h3><%= "Conteudo da semana" %></h3>
-
       <%= link_to 'Adicionar Conteúdo', new_post_path if current_user.professor %>
-      <br><%= @post.last.content if @post.present?%>
-
+      <br>
+      <%= @post.last.content if @post.present?%>
       <h3>Questionários</h3>
       <table>
         <th>Semana</th>
@@ -26,6 +25,11 @@
                   <% end %>
                 <% else %>
                   <button class="btn btn-primary">Entrar</button>
+                  <% if current_user.presidente_da_classe  %>
+                    <%= link_to test_stars_path(t) do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                  <% end %>
                 <% end %>
               </td>
             </tr>
