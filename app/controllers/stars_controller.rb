@@ -6,5 +6,4 @@ class StarsController < ApplicationController
   def index
     @users = User.all
   end
-
 end
