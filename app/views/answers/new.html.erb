@@ -1,15 +1,21 @@
-<%= simple_form_for @answers do |f| %>
-  <h4><%= @test.question1 %></h4>
-  <p>Resposta: </p>
-  <%= f.input :answer1, label: false %>
-  <h4><%= @test.question2 %></h4>
-  <p>Resposta: </p>
-  <%= f.input :answer2, label: false %>
-  <h4><%= @test.question3 %></h4>
-  <p>Resposta: </p>
-  <%= f.input :answer3, label: false %>
-  <h4><%= @test.question4 %></h4>
-  <p>Resposta: </p>
-  <%= f.input :answer4, label: false %>
-  <%= f.submit "Enviar", class:"btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <%#= simple_form_for @answer do |f| %>
+        <h4><%= @test.question1 %></h4>
+        <p>Resposta: </p>
+        <%#= f.input :answer1, label: false %>
+        <h4><%= @test.question2 %></h4>
+        <p>Resposta: </p>
+        <%#= f.input :answer2, label: false %>
+        <h4><%= @test.question3 %></h4>
+        <p>Resposta: </p>
+        <%#= f.input :answer3, label: false %>
+        <h4><%= @test.question4 %></h4>
+        <p>Resposta: </p>
+        <%#= f.input :answer4, label: false %>
+        <%#= f.submit "Enviar", class:"btn btn-primary" %>
+        <%# end %>
+      </div>
+    </div>
+  </div>

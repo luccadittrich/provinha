@@ -4,12 +4,17 @@ class AnswersController < ApplicationController
   end
 
   def new
+    @test = Test.find(params[:test_id])
     @answer = Answer.new
   end
 
   def create
-    @test = Test.find(params[:test_id])
-    @answer = Answer.new(test: @test, user: current_user)
+    @test = session[:test]
+
+    # @test = Test.find(params[:test_id])
+    # @answer = Answer.new(test: @test, user: current_user)
+    @answer = Answer.new(answer_params)
+    @answer.user = current_user
     @answer.save
     if @answer.save
       redirect_to root_path
@@ -36,7 +41,6 @@ class AnswersController < ApplicationController
   def show
     @answer = Answer.find(params[:id])
     @test = Test.find(params[:id])
-
   end
 
   def destroy
