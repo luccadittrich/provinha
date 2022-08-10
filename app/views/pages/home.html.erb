@@ -2,7 +2,10 @@
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4">
       <h3><%= "Conteudo da semana" %></h3>
+
       <%= link_to 'Adicionar Conteúdo', new_post_path if current_user.professor %>
+      <br><%= @post.last.content if @post.present?%>
+
       <h3>Questionários</h3>
       <table>
         <th>Semana</th>

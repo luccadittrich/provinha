@@ -14,13 +14,14 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.save
     if @post.save
-      redirect_to home_path
+      redirect_to root_path
     else
       render :new
     end
   end
 
   def index
+    @posts = Post.all
     @post = Post.find(params[:post_id])
   end
 
