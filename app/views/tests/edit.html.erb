@@ -8,9 +8,12 @@
         <%= f.input :question2, label: false %>
         <%= f.input :question3, label: false %>
         <%= f.input :question4, label: false %>
-        <%= f.input :private, label: "Aberto" %>
+        <div class="d-flex">
+          <p class="m-0">Aberto?</p>
+          <%= f.check_box :private, class: "check-box" %>
+        </div>
         <%= f.submit "Editar", class:"btn btn-primary" %>
-       <% end %>
+      <% end %>
       <%= render 'shared/footer' %>
     </div>
   </div>
