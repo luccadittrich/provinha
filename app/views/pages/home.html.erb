@@ -5,35 +5,40 @@
       <div class="row">
         <%= link_to 'Adicionar Conteúdo', new_post_path if current_user.professor %>
       </div>
-      <%= cl_image_tag User.where(professor: true).first.photo.key, class: "avatar" %>
-      <%= Post.last.content %>
-      <h3>Questionários</h3>
+      <%= cl_image_tag User.where(professor: true).first.photo.key, class: "avatar" if User.where(professor: true).present? %>
+      <%= Post.last.content if Post.last.present? %>
       <table>
-        <th>Semana</th>
-        <th>Questionário</th>
+        <th>Questionários</th>
         <th>Opções</th>
         <% i = 0 %>
         <% if @test.present? %>
           <% @test.each do |t| %>
             <tr>
-              <td><%= i += 1 %></td>
-              <td><%= link_to "QUESTIONÁRIO", test_path(t) %></td>
-              <td>
-                <% if current_user.professor %>
-                  <i class="fas fa-unlock-alt"></i>
-                  <i class="fas fa-lock"></i>
-                  <%= link_to edit_test_path(t) do %>
-                    <i class="fas fa-edit"></i>
-                  <% end %>
-                <% else %>
-                  <button class="btn btn-primary">Entrar</button>
-                  <% if current_user.presidente_da_classe  %>
-                    <%= link_to test_stars_path(t) do %>
-                      <i class="fas fa-star"></i>
+              <% if t.private == true || current_user.professor  %>
+                <td><%= link_to "QUESTIONÁRIO #{t.id}", test_path(t) %></td>
+                <td>
+                  <% if current_user.professor %>
+                    <% if t.private %>
+                      <i class="fas fa-unlock-alt"></i>
+                    <% else %>
+                      <i class="fas fa-lock"></i>
+                    <% end %>
+                    <%= link_to edit_test_path(t) do %>
+                      <i class="fas fa-edit"></i>
+                    <% end %>
+                    <%= link_to test_answers_path(t) do %>
+                      <i class="fas fa-check-square"></i>
+                    <% end %>
+                  <% else %>
+                    <button class="btn btn-primary">Entrar</button>
+                    <% if current_user.presidente_da_classe  %>
+                      <%= link_to test_stars_path(t) do %>
+                        <i class="fas fa-star"></i>
+                      <% end %>
                     <% end %>
                   <% end %>
-                <% end %>
-              </td>
+                </td>
+              <% end %>
             </tr>
           <% end %>
         <% end %>

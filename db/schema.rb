@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2022_08_10_180721) do
     t.string "question2"
     t.string "question3"
     t.string "question4"
+    t.boolean "private", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

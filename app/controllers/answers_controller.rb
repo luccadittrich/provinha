@@ -1,6 +1,8 @@
 class AnswersController < ApplicationController
   def index
     @answers = Answer.all
+    @tests = Test.all
+
   end
 
   def new
@@ -9,12 +11,11 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @test = session[:test]
-
-    # @test = Test.find(params[:test_id])
+    # @test =  Test.find(params[:test_id])
     # @answer = Answer.new(test: @test, user: current_user)
     @answer = Answer.new(answer_params)
     @answer.user = current_user
+    @answer.test = Test.find(params[:test_id])
     @answer.save
     if @answer.save
       redirect_to root_path
@@ -47,5 +48,11 @@ class AnswersController < ApplicationController
     @answer = answer.find(params[:id])
     @answer.destroy
     redirect_to answers_path, notice: "O Questionário #{@answer.id} foi cancelado!"
+  end
+
+  private
+
+  def answer_params
+    params.require(:answer).permit(:answer1, :answer2, :answer3, :answer4)
   end
 end
