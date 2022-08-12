@@ -5,7 +5,7 @@
       <div class="row">
         <%= link_to 'Adicionar Conteúdo', new_post_path if current_user.professor %>
       </div>
-      <%= cl_image_tag User.where(professor: true).first.photo.key, class: "avatar" if User.where(professor: true).present? %>
+      <%= cl_image_tag User.where(professor: true).first.photo.key, class: "avatar" if User.where(professor: true).present? && Post.last.present? %>
       <%= Post.last.content if Post.last.present? %>
       <table>
         <th>Questionários</th>
