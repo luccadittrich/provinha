@@ -1,11 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="col-6">
       <% @users.each do |u| %>
-        <% unless u.professor %>
-          <%= cl_image_tag u.photo.key, class: "avatar-large" %>
-          <%= u.nome_completo %>
-        <% end %>
+        <div class="d-flex">
+          <% unless u.professor %>
+            <div class="w-10">
+              <%= cl_image_tag u.photo.key, class: "avatar-large" %>
+              <%= u.nome_completo %>
+            </div>
+          <% end %>
+        </div>
       <% end %>
       <%= render 'shared/footer' %>
     </div>
