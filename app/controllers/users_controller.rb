@@ -12,4 +12,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:photo)
   end
+
+  def index
+    @users = Users.all
+  end
+  
 end
