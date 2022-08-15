@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
-      <% if current_user.professor %>
+      <% if current_user.teacher %>
         <%= simple_form_for @test do |f| %>
           <p>Semana <%= @test.id %> </p>
           <% if @test.private %>

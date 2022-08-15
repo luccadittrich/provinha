@@ -3,13 +3,13 @@
     <div class="col-sm-12 col-md-12 col-lg-12">
       <div class="d-flex flex-wrap justify-content-center">
         <% @users.each do |u| %>
-          <% unless u.professor %>
+          <% unless u.teacher %>
             <div class="d-flex flex-column m-2 mb-0 align-items-center">
               <%= cl_image_tag u.photo.key, class: "avatar-large align-self-center",
                 transformation: [ {gravity: :face, height: 400, width: 400, crop: :fill},
                 {radius: :max},
                 {width: 200, crop: :scale} ] %>
-              <%= u.nome_completo.split(" ")[0].titleize if u.nome_completo.present? %>
+              <%= u.first_name.titleize if u.first_name.present? %>
               <i class="far fa-star star-index"></i>
             </div>
           <% end %>

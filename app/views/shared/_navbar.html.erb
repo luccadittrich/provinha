@@ -21,7 +21,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <% if user_signed_in? %>
-            <% unless current_user.professor %>
+            <% unless current_user.teacher %>
               <p class="dropdown-item m-0">Pontos: <%= current_user.score %></p>
             <% end %>
             <%= link_to "home", root_path, class: "dropdown-item" %>

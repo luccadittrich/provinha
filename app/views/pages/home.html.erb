@@ -3,54 +3,54 @@
     <div class="col-sm-12 col-md-12 col-lg-12">
       <h3><%= "Conteudo da semana" %></h3>
       <div class="row">
-        <%= link_to 'Adicionar Conteúdo', new_post_path if current_user.professor %>
+        <%= link_to 'Adicionar Conteúdo', new_post_path if current_user.teacher %>
       </div>
-      <%= cl_image_tag User.where(professor: true).first.photo.key, class: "avatar",
+      <%= cl_image_tag User.where(teacher: true).first.photo.key, class: "avatar",
         transformation: [ {gravity: :face, height: 400, width: 400, crop: :fill},
         {radius: :max},
-        {width: 200, crop: :scale} ] if User.where(professor: true).present? && Post.last.present? %>
-        <%= Post.last.content if Post.last.present? %>
-        <table>
-          <th>Questionários</th>
-          <th>Opções</th>
-          <% i = 0 %>
-          <% if @test.present? %>
-            <% @test.each do |t| %>
-              <tr>
-                <% if t.private == true || current_user.professor  %>
-                  <td><%= link_to "QUESTIONÁRIO #{t.id}", test_path(t) %></td>
-                  <td>
-                    <% if current_user.professor %>
-                      <% if t.private %>
-                        <i class="fas fa-unlock-alt"></i>
-                      <% else %>
-                        <i class="fas fa-lock"></i>
-                      <% end %>
-                      <%= link_to edit_test_path(t) do %>
-                        <i class="fas fa-edit"></i>
-                      <% end %>
-                      <%= link_to test_answers_path(t) do %>
-                        <i class="fas fa-check-square"></i>
-                      <% end %>
+        {width: 200, crop: :scale} ] if User.where(teacher: true).present? && Post.last.present? %>
+      <%= Post.last.content if Post.last.present? %>
+      <table>
+        <th>Questionários</th>
+        <th>Opções</th>
+        <% i = 0 %>
+        <% if @test.present? %>
+          <% @test.each do |t| %>
+            <tr>
+              <% if t.private == true || current_user.teacher  %>
+                <td><%= link_to "QUESTIONÁRIO #{t.id}", test_path(t) %></td>
+                <td>
+                  <% if current_user.teacher %>
+                    <% if t.private %>
+                      <i class="fas fa-unlock-alt"></i>
                     <% else %>
-                      <button class="btn btn-primary">Entrar</button>
-                      <% if current_user.presidente_da_classe  %>
-                        <%= link_to test_stars_path(t) do %>
-                          <i class="fas fa-star"></i>
-                        <% end %>
+                      <i class="fas fa-lock"></i>
+                    <% end %>
+                    <%= link_to edit_test_path(t) do %>
+                      <i class="fas fa-edit"></i>
+                    <% end %>
+                    <%= link_to test_answers_path(t) do %>
+                      <i class="fas fa-check-square"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to "Entrar", test_path(t), class: "btn btn-primary" %>
+                    <% if current_user.president  %>
+                      <%= link_to test_stars_path(t) do %>
+                        <i class="fas fa-star"></i>
                       <% end %>
                     <% end %>
-                  </td>
-                <% end %>
-              </tr>
-            <% end %>
-          <% end %>
-        </table>
-        <% if current_user.professor %>
-          <%= link_to new_test_path do %>
-            <i class="fas fa-plus-circle fa-2x p-2"></i>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
           <% end %>
         <% end %>
-      </div>
+      </table>
+      <% if current_user.teacher %>
+        <%= link_to new_test_path do %>
+          <i class="fas fa-plus-circle fa-2x p-2"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
+</div>
