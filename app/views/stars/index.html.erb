@@ -5,14 +5,16 @@
         <% @users.each do |u| %>
           <% unless u.professor %>
             <div class="d-flex flex-column m-2 mb-0 align-items-center">
-              <%= cl_image_tag u.photo.key, gravity: :face, crop: :thumb, width: 60, height: 60, radius: :max, crop: :fill, class: "avatar-large align-self-center" %>
-              <%= u.nome_completo.split(" ")[0].titleize %>
+              <%= cl_image_tag u.photo.key, class: "avatar-large align-self-center",
+                transformation: [ {gravity: :face, height: 400, width: 400, crop: :fill},
+                {radius: :max},
+                {width: 200, crop: :scale} ] %>
+              <%= u.nome_completo.split(" ")[0].titleize if u.nome_completo.present? %>
               <i class="far fa-star star-index"></i>
             </div>
           <% end %>
         <% end %>
       </div>
-      <%= render 'shared/footer' %>
     </div>
   </div>
 </div>

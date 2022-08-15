@@ -1,18 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-6 col-lg-4">
-      <%= simple_form_for @test do |f| %>
-        <p>Semana <%= @test.id %> </p>
-        <p>Este teste está <%= @test.private ? "aberto " : "fechado" %></p>
-        <%= f.input :question1, label: false %>
-        <%= f.input :question2, label: false %>
-        <%= f.input :question3, label: false %>
-        <%= f.input :question4, label: false %>
-        <div class="d-flex">
-          <p class="m-0">Aberto?</p>
-          <%= f.check_box :private, class: "check-box" %>
-        </div>
-        <%= f.submit "Editar", class:"btn btn-primary" %>
+    <div class="col-sm-12 col-md-6 col-lg-12">
+      <% if current_user.professor %>
+        <%= simple_form_for @test do |f| %>
+          <p>Semana <%= @test.id %> </p>
+          <% if @test.private %>
+            <p style="color: green;">Este teste está aberto</p>
+          <% else %>
+            <p style="color: red;">Este teste está fechado</p>
+          <% end %>
+          <%= f.input :question1, label: false %>
+          <%= f.input :question2, label: false %>
+          <%= f.input :question3, label: false %>
+          <%= f.input :question4, label: false %>
+          <div class="d-flex">
+            <p class="m-0">Aberto?</p>
+            <%= f.check_box :private, class: "check-box" %>
+          </div>
+          <%= f.submit "Editar", class:"btn btn-primary" %>
+        <% end %>
+      <% else %>
+        <p>Este teste não está aberto no momento</p>
       <% end %>
       <%= render 'shared/footer' %>
     </div>
