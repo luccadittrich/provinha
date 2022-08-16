@@ -4,6 +4,6 @@ class AddNameToUser < ActiveRecord::Migration[6.1]
     add_column :users, :last_name, :string
     add_column :users, :teacher, :boolean
     add_column :users, :president, :boolean
-    add_column :users, :score, :integer
+    add_column :users, :score, :integer, default: 0
   end
 end

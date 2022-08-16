@@ -40,8 +40,9 @@ class AnswersController < ApplicationController
   end
 
   def show
-    @answer = Answer.find(params[:id])
     @test = Test.find(params[:id])
+    @answers = Answer.find(params[:id])
+    @answer = @answers.test
   end
 
   def destroy

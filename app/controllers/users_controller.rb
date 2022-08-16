@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = Users.all
+    @users = User.all
+    @tests = Test.all
   end
 end

@@ -4,8 +4,7 @@
       <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle m-2",
         transformation: [ {gravity: :face, height: 400, width: 400, crop: :fill},
         {radius: :max},
-        {width: 200, crop: :scale}
-        ] %>
+        {width: 200, crop: :scale} ] %>
       <%= render 'shared/icon' %>
     </div>
     <div class="navbar navbar-expand-sm navbar-light">
@@ -24,8 +23,9 @@
             <% unless current_user.teacher %>
               <p class="dropdown-item m-0">Pontos: <%= current_user.score %></p>
             <% end %>
-            <%= link_to "home", root_path, class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Home", root_path, class: "dropdown-item" %>
+            <%= link_to "Perfil", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { confirm: "Deseja sair?" } %>
           <% end %>
         </div>
       </div>
