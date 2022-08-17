@@ -6,39 +6,46 @@
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
           <div class="form-inputs">
-            <%= f.input :first_name,
+            <div class="d-flex">
+              <%= f.input :first_name,
                 label: "Nome",
                 autofocus: true,
-                input_html: { autocomplete: "Nome completo" } %>
-            <%= f.input :last_name,
+                input_html: {
+                class: 'form-control'},
+                required: true  %>
+              <%= f.input :last_name,
                 label: "Sobrenome",
                 autofocus: true,
-                input_html: { autocomplete: "Nome completo" } %>
+                input_html: { class: "form-control" },
+                required: true %>
+            </div>
             <div class="d-flex justify-content-around">
               <%= f.input :teacher,
                label: "Professor",
                autofocus: false,
-               input_html: { autocomplete: "teacher?" } %>
+               input_html: { class: "form-control" } %>
               <%= f.input :president,
                label: "Presidente da classe",
                autofocus: false,
-               input_html: { autocomplete: "Presidente da classe?" } %>
+               input_html: { class: "form-control" } %>
             </div>
             <%= f.input :photo,
                 as: :file,
-                label: "Foto" %>
+                label: "Foto",
+                input_html: { class: 'form-control' },
+                required: true  %>
             <%= f.input :email,
                 required: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { class: "form-control" }%>
             <%= f.input :password,
                 label: "Senha",
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { class: "form-control" } %>
             <%= f.input :password_confirmation,
                 label: "Confirme sua senha",
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { class: "form-control" } %>
             <div class="form-actions d-flex mt-1">
               <%= f.button :submit, "Criar conta", class: "w-100 m-1 p-1 btn btn-success", style: "color: #fff" %>
               <%= render "devise/shared/links" %>
