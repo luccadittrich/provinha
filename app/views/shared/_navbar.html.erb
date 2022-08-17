@@ -1,11 +1,13 @@
 <div class="container d-flex">
   <% if user_signed_in? %>
     <div class="hide-mobile">
-      <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle m-2",
+      <% if current_user.photo.key.present? %>
+        <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle m-2",
         transformation: [ {gravity: :face, height: 400, width: 400, crop: :fill},
         {radius: :max},
         {width: 200, crop: :scale} ] %>
-      <%= render 'shared/icon' %>
+        <%= render 'shared/icon' %>
+      <% end %>
     </div>
     <div class="navbar navbar-expand-sm navbar-light">
       <div class="container-fluid">
