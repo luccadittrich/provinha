@@ -11,14 +11,14 @@
         {width: 200, crop: :scale} ] if User.where(teacher: true).present? && Post.last.present? %>
       <%= Post.last.content if Post.last.present? %>
       <table>
-        <th>Questionários</th>
+        <th>Semana</th>
         <th>Opções</th>
         <% i = 0 %>
         <% if @test.present? %>
           <% @test.each do |t| %>
             <tr>
               <% if t.private == true || current_user.teacher  %>
-                <td><%= link_to "QUESTIONÁRIO #{t.id}", test_path(t) %></td>
+                <td><%= link_to "Semana #{t.id}", test_path(t) %></td>
                 <td>
                   <% if current_user.teacher %>
                     <% if t.private %>
