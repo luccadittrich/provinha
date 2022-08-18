@@ -4,7 +4,7 @@
       <% @answers.each do |a| %>
         <h5>Semana <%= a.test.id %></h5>
         <%= cl_image_tag a.user.photo.key, gravity: :face, crop: :thumb, width: 40, height: 40, class: "avatar" %>
-        <%= a.user.first_name %>
+        <%= a.user.first_name.titleize + " " + a.user.last_name.titleize %>
         <p><b><%= a.test.question1 %></b> <%= a.answer1 %></p>
         <p><b><%= a.test.question2 %></b> <%= a.answer2 %></p>
         <p><b><%= a.test.question3 %></b> <%= a.answer3 %></p>
