@@ -5,7 +5,7 @@
       <div class="row">
         <%= link_to 'Adicionar Conteúdo', new_post_path if current_user.teacher %>
       </div>
-      <%= cl_image_tag User.where(teacher: true).first.photo.key, class: "avatar",
+      <%= cl_image_tag Post.last.user.photo.key, class: "avatar",
         transformation: [ {gravity: :face, height: 400, width: 400, crop: :fill},
         {radius: :max},
         {width: 200, crop: :scale} ] if User.where(teacher: true).present? && Post.last.present? %>
