@@ -1,18 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4">
-      <%= simple_form_for [@test, @answer] do |f| %>
-        <h4><%= @test.question1 %></h4>
-        <%= f.input :answer1, label: false, value: "resposta" %>
-        <h4><%= @test.question2 %></h4>
-        <%= f.input :answer2, label: false, value: "resposta" %>
-        <h4><%= @test.question3 %></h4>
-        <%= f.input :answer3, label: false, value: "resposta" %>
-        <h4><%= @test.question4 %></h4>
-        <%= f.input :answer4, label: false, value: "resposta" %>
-        <%= f.submit "Enviar", class:"btn btn-primary" %>
+      <% if current_user.teacher %>
+        <%= simple_form_for [@test, @answer] do |f| %>
+          <h4><%= @test.question1 %></h4>
+          <%= f.input :answer1, label: false, value: "resposta" %>
+          <h4><%= @test.question2 %></h4>
+          <%= f.input :answer2, label: false, value: "resposta" %>
+          <h4><%= @test.question3 %></h4>
+          <%= f.input :answer3, label: false, value: "resposta" %>
+          <h4><%= @test.question4 %></h4>
+          <%= f.input :answer4, label: false, value: "resposta" %>
+          <%= f.submit "Enviar", class:"btn btn-primary" %>
+        <% end %>
+      <% else %>
+        <h4>Você não tem autorização para acessar essa página</h4>
       <% end %>
-        <%= render 'shared/footer' %>
-      </div>
+      <%= render 'shared/footer' %>
     </div>
   </div>
+</div>
