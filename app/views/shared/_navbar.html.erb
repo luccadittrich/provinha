@@ -12,13 +12,15 @@
     <div class="navbar navbar-expand-sm navbar-light">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle m-2", id: "navbarDropdown",
+          <% if current_user.photo.key.present? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle m-2", id: "navbarDropdown",
           data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false,
           transformation: [ {gravity: :face, height: 400, width: 400, crop: :fill},
             {radius: :max},
             {width: 200, crop: :scale} ] %>
-          <%# current_user.score = 35 %>
-          <%= render 'shared/icon' %>
+            <%# current_user.score = 35 %>
+            <%= render 'shared/icon' %>
+          <% end %>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <% if user_signed_in? %>

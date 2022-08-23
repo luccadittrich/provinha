@@ -1,13 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-12 col-lg-4">
-      <p>Semana <%= Test.count + 1 %></p>
-      <%= simple_form_for @test do |f| %>
-        <%= f.input :question1, label: false %>
-        <%= f.input :question2, label: false %>
-        <%= f.input :question3, label: false %>
-        <%= f.input :question4, label: false %>
-        <%= f.submit 'Enviar', class: 'btn btn-primary' %>
+      <% if current_user.teacher %>
+        <p>Semana <%= Test.count + 1 %></p>
+        <%= simple_form_for @test do |f| %>
+          <%= f.input :question1, label: false %>
+          <%= f.input :question2, label: false %>
+          <%= f.input :question3, label: false %>
+          <%= f.input :question4, label: false %>
+          <%= f.submit 'Enviar', class: 'btn btn-primary' %>
+        <% end %>
+      <% else %>
+        <h4>Você não tem autorização para acessar essa página</h4>
       <% end %>
       <%= render 'shared/footer' %>
     </div>
