@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4">
       <%= simple_form_for @post do |f| %>
-        <%= f.input :content, label: false, placeholder: 'Informações', input_html: {class: 'ps-3 '} %>
-        <%= f.input :files, label: false, as: :file, input_html: { multiple: true, class: "d-none" } %>
+        <%= f.input :content, label: false, placeholder: 'Informações', input_html: {class: 'ps-3 form-control'} %>
+        <%= f.input :memorize, label: false, placeholder: "Memorizar", input_html: {class: 'ps-3 form-control'} %>
+        <%#= f.input :files, label: false, as: :file, input_html: { multiple: true, class: "d-none" } %>
         <%= f.submit 'Enviar', class: 'btn btn-primary' %>
       <% end %>
 

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
-    @posts = @post.posts.order(created_at: :desc)
+    # @posts = @post.posts.order(created_at: :desc)
     @new_post = Post.new
   end
 
@@ -28,6 +28,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :user_id, :post_id, files: [])
+    params.require(:post).permit(:content, :memorize, :user_id, :post_id, files: [])
   end
 end

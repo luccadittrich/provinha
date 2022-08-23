@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <% memorize = @post.memorize.split(" ") %>
+      <% memorize.each do |x| %>
+        <% x[rand(0..2)..rand(3..5)] = "___" if x.length > 3 %>
+        <%= x %>
+      <% end %>
+
+
+
+    </div>
+  </div>
+</div>

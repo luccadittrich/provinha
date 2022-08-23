@@ -1,15 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
-      <h3><%= "Conteudo da semana" %></h3>
-      <div class="row">
-        <%= link_to 'Adicionar Conteúdo', new_post_path if current_user.teacher %>
+      <div class="d-flex">
+        <h4><%= "Conteudo da semana" %></h4>
+        <% if current_user.teacher%>
+          <%= link_to new_post_path do  %>
+            <i class="fas fa-plus-circle p-1"></i>
+          <% end %>
+        <% end %>
       </div>
       <%= cl_image_tag Post.last.user.photo.key, class: "avatar",
         transformation: [ {gravity: :face, height: 400, width: 400, crop: :fill},
         {radius: :max},
-        {width: 200, crop: :scale} ] if User.where(teacher: true).present? && Post.last.present? %>
+        {width: 200, crop: :scale} ] if Post.last.present? %>
       <%= Post.last.content if Post.last.present? %>
+      <p><%= link_to "Memorizar", post_path(Post.last) if Post.last.present? %></p>
       <table>
         <th>Semana</th>
         <th>Opções</th>
