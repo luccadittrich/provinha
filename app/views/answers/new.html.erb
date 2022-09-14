@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4">
-      <% if current_user.teacher %>
+      <% if current_user.teacher || @test.private == true %>
         <%= simple_form_for [@test, @answer] do |f| %>
           <h4><%= @test.question1 %></h4>
           <%= f.input :answer1, label: false, value: "resposta" %>
