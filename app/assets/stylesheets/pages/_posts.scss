@@ -39,5 +39,12 @@ tr:nth-child(even) {
   left: 20px;
 }
 .fa-star {
+  color: rgb(204, 204, 204);
+  &:hover{
+    color: rgb(255, 119, 0);
+  }
+}
+.star-hover {
+
   color: rgb(255, 119, 0);
 }

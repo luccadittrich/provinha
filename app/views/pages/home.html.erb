@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container center-container">
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
       <div class="d-flex">
@@ -41,7 +41,7 @@
                     <%= link_to "Entrar", test_path(t), class: "btn btn-primary" %>
                     <% if current_user.president  %>
                       <%= link_to test_stars_path(t) do %>
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star star-hover"></i>
                       <% end %>
                     <% end %>
                   <% end %>

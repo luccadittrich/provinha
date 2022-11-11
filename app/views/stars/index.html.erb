@@ -11,7 +11,9 @@
                 {radius: :max},
                 {width: 200, crop: :scale} ] %>
                 <%= u.first_name.titleize %>
-                <i class="far fa-star star-index"></i>
+                <%= link_to new_test_star_path(u), method: :get do%>
+                  <i class="fas fa-star star-index"></i>
+                <% end %>
               </div>
             <% end %>
           <% end %>
