@@ -1,27 +1,33 @@
 <div class="container">
   <div class="row">
-    <% @answers.each do |a| %>
+    <% @answers.each do |answer| %>
       <div class="col-12 col-md-6 col-lg-4 p-2">
-        <% if a.user.teacher %>
+        <% if answer.user.teacher %>
           <div class="teacher-answer">
-            <h5>Semana <%= a.test.id %> - Respostas</h5>
-            <p><b><%= a.test.question1 %></b> <%= a.answer1 %></p>
-            <p><b><%= a.test.question2 %></b> <%= a.answer2 %></p>
-            <p><b><%= a.test.question3 %></b> <%= a.answer3 %></p>
-            <p><b><%= a.test.question4 %></b> <%= a.answer4 %></p>
+            <%= "Semana #{answer.test.id} - Respostas" %>
+            <%= link_to test_answer_path(answer.test_id, answer.user_id), method: :delete do %>
+              <i class="fas fa-backspace"></i>
+            <% end %>
+            <p><b><%= answer.test.question1 %></b> <%= answer.answer1 %></p>
+            <p><b><%= answer.test.question2 %></b> <%= answer.answer2 %></p>
+            <p><b><%= answer.test.question3 %></b> <%= answer.answer3 %></p>
+            <p><b><%= answer.test.question4 %></b> <%= answer.answer4 %></p>
           </div>
         <% else %>
           <div class="student-answer">
-            <h5>Semana <%= a.test.id %></h5>
-            <%= cl_image_tag a.user.photo.key, gravity: :face, crop: :thumb, width: 40, height: 40, class: "avatar" %>
-            <%= a.user.first_name.titleize + " " + a.user.last_name.titleize %>
-            <p><b><%= a.test.question1 %></b> <%= a.answer1 %></p>
-            <p><b><%= a.test.question2 %></b> <%= a.answer2 %></p>
-            <p><b><%= a.test.question3 %></b> <%= a.answer3 %></p>
-            <p><b><%= a.test.question4 %></b> <%= a.answer4 %></p>
+            <%= cl_image_tag answer.user.photo.key, gravity: :face, crop: :thumb, class: "avatar" %>
+            <%= answer.user.first_name.titleize + " " + answer.user.last_name.titleize + " " + "- Semana #{answer.test.id}" %>
+            <%= link_to test_answer_path(answer.test_id, answer.user_id), method: :delete do %>
+              <i class="fas fa-backspace"></i>
+            <% end %>
+            <p><b><%= answer.test.question1 %></b> <%= answer.answer1 %></p>
+            <p><b><%= answer.test.question2 %></b> <%= answer.answer2 %></p>
+            <p><b><%= answer.test.question3 %></b> <%= answer.answer3 %></p>
+            <p><b><%= answer.test.question4 %></b> <%= answer.answer4 %></p>
           </div>
         <% end %>
       </div>
     <% end %>
   </div>
+  
 </div>

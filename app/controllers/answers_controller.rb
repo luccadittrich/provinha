@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
   def index
     @answers = Answer.all
     @tests = Test.all
+    @users = User.all
 
   end
 
@@ -46,9 +47,11 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-    @answer = answer.find(params[:id])
+    @user = User.find(params[:id])
+    @test = Test.find(params[:test_id])
+    @answer = Answer.find_by(test: @test, user: @user)
     @answer.destroy
-    redirect_to answers_path, notice: "O Questionário #{@answer.id} foi cancelado!"
+    redirect_to test_answers_path, notice: "A resposta foi excluída!"
   end
 
   private
