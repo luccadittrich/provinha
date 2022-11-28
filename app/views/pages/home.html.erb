@@ -16,6 +16,7 @@
       <%= Post.last.content if Post.last.present? %>
       <p><%= link_to "Memorizar", post_path(Post.last) if Post.last.present? %></p>
       <table>
+        <th></th>
         <th>Semana</th>
         <th>Opções</th>
         <% i = 0 %>
@@ -23,16 +24,21 @@
           <% @test.each do |t| %>
             <tr>
               <% if t.private == true || current_user.teacher  %>
+                <td>
+                  <% if t.private %>
+                    <i class="fas fa-unlock-alt"></i>
+                  <% else %>
+                    <i class="fas fa-lock"></i>
+                  <% end %>
+                </td>
                 <td><%= link_to "Semana #{t.id}", test_path(t) %></td>
                 <td>
                   <% if current_user.teacher %>
-                    <% if t.private %>
-                      <i class="fas fa-unlock-alt"></i>
-                    <% else %>
-                      <i class="fas fa-lock"></i>
-                    <% end %>
                     <%= link_to edit_test_path(t) do %>
                       <i class="fas fa-edit"></i>
+                    <% end %>
+                    <%= link_to test_path(t), method: :delete do %>
+                      <i class="fas fa-trash"></i>
                     <% end %>
                     <%= link_to test_answers_path(t) do %>
                       <i class="fas fa-check-square"></i>

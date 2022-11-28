@@ -9,10 +9,10 @@
           <% else %>
             <p style="color: red;">Este teste está fechado</p>
           <% end %>
-          <%= f.input :question1, label: false %>
-          <%= f.input :question2, label: false %>
-          <%= f.input :question3, label: false %>
-          <%= f.input :question4, label: false %>
+          <%= f.input :question1, label: false, placeholder: "Pergunta 1" %>
+          <%= f.input :question2, label: false, placeholder: "Pergunta 2" %>
+          <%= f.input :question3, label: false, placeholder: "Pergunta 3" %>
+          <%= f.input :question4, label: false, placeholder: "Pergunta 4" %>
           <div class="d-flex">
             <p class="m-0">Aberto?</p>
             <%= f.check_box :private, class: "check-box" %>

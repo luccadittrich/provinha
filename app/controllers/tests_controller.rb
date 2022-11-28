@@ -39,9 +39,9 @@ class TestsController < ApplicationController
   end
 
   def destroy
-    @test = test.find(params[:id])
+    @test = Test.find(params[:id])
     @test.destroy
-    redirect_to tests_path, notice: "O Questionário #{@test.id} foi cancelado!"
+    redirect_to root_path, notice: "O Questionário #{@test.id} foi cancelado!"
   end
 
   private
