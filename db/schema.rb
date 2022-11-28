@@ -44,10 +44,7 @@ ActiveRecord::Schema.define(version: 2022_10_07_011259) do
   end
 
   create_table "answers", force: :cascade do |t|
-    t.string "answer1"
-    t.string "answer2"
-    t.string "answer3"
-    t.string "answer4"
+    t.text "answer", default: [], array: true
     t.bigint "user_id", null: false
     t.bigint "test_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -68,6 +65,7 @@ ActiveRecord::Schema.define(version: 2022_10_07_011259) do
   create_table "stars", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "test_id", null: false
+    t.boolean "confirmed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["test_id"], name: "index_stars_on_test_id"
@@ -76,10 +74,7 @@ ActiveRecord::Schema.define(version: 2022_10_07_011259) do
   end
 
   create_table "tests", force: :cascade do |t|
-    t.string "question1"
-    t.string "question2"
-    t.string "question3"
-    t.string "question4"
+    t.text "question", default: [], array: true
     t.boolean "private", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

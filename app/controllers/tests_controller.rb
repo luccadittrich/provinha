@@ -36,6 +36,7 @@ class TestsController < ApplicationController
   def show
     @test = Test.find(params[:id])
     @answers = Answer.all
+    @question = @test.question
   end
 
   def destroy

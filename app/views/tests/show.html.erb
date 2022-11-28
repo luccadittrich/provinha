@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-4">
       <% if @test.private == true || current_user.teacher %>
-        <h4><%= @test.question1 %></h4>
-        <h4><%= @test.question2 %></h4>
-        <h4><%= @test.question3 %></h4>
-        <h4><%= @test.question4 %></h4>
+
+        <% @question.each do |q| %>
+          <h4><%= q %></h4>
+        <% end %>
         <%= link_to "Responder", new_test_answer_path(@test) %>
       <% else %>
         <h4>Você não tem autorização para acessar essa página</h4>

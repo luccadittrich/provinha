@@ -7,8 +7,10 @@ class AnswersController < ApplicationController
   end
 
   def new
+
     @test = Test.find(params[:test_id])
     @answer = Answer.new
+    @question = @test.question
   end
 
   def create

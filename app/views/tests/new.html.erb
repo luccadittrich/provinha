@@ -3,12 +3,22 @@
     <div class="col-12 col-md-12 col-lg-4">
       <% if current_user.teacher %>
         <p>Semana <%= Test.count + 1 %></p>
+        <% index = 0 %>
+
         <%= simple_form_for @test do |f| %>
-          <%= f.input :question1, label: false %>
-          <%= f.input :question2, label: false %>
-          <%= f.input :question3, label: false %>
-          <%= f.input :question4, label: false %>
+          <%= "Pergunta #{index += 1} "%>
+          <%= f.input :question, label: false %>
+
+
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+          <div id="formationSet" class="form-group row">
+
+          </div>
+
+          <a href="javascript:" id="addNewFormation">Add </a>
+
           <%= f.submit 'Enviar', class: 'btn btn-primary' %>
+
         <% end %>
       <% else %>
         <h4>Você não tem autorização para acessar essa página</h4>
@@ -17,3 +27,18 @@
     </div>
   </div>
 </div>
+<script>
+  var z = 1;
+  $(document).ready(function(){
+
+      $('#addNewFormation').click(function(){
+
+          $('div#formationSet').append(`<div class ='FormationsForm'><p>Pergunta ${z += 1 } <p><textarea class='text optional' name='test[question]' id='test_question'>[]</textarea>`+
+              '<button class="removeNewFormation" type="button">remove</button>    </div>');
+      });
+
+      $("div#formationSet").on('click', '.removeNewFormation', function(){
+          $(this).closest('.FormationsForm').remove();
+      });
+  });
+</script>
