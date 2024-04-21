@@ -10,6 +10,15 @@ cloudinary:
   service: Cloudinary
   folder: <%= Rails.env %>
 
+cloudinary:
+  service: Cloudinary
+  cloud_name: 'dgayxncrk' # Substitua 'seu_cloud_name' pelo seu cloud_name do Cloudinary
+  api_key: '763757119594341' # Substitua 'sua_api_key' pela sua api_key do Cloudinary
+  api_secret: 'CzNvj3xyOfSAorM-3oLEdSevgP4' # Substitua 'seu_api_secret' pela sua api_secret do Cloudinary
+  secure: true
+  folder: <%= Rails.env %>
+
+
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3

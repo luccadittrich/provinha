@@ -67,3 +67,6 @@ gem 'carrierwave', '~> 2.0'
 gem "simple_form", github: "heartcombo/simple_form"
 gem 'cloudinary', '~> 1.23.0'
 gem 'i18n', '~> 1.9'
+
+gem "bootstrap", "~> 5.3"
+gem 'htmlbeautifier'

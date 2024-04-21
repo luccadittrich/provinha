@@ -9,7 +9,7 @@
         <%= render 'shared/icon' %>
       <% end %>
     </div>
-    <div class="navbar navbar-expand-sm navbar-light">
+    <div class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <% if current_user.photo.key.present? %>
@@ -22,16 +22,30 @@
             <%= render 'shared/icon' %>
           <% end %>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <% if user_signed_in? %>
-            <% unless current_user.teacher %>
-              <p class="dropdown-item m-0">Pontos: <%= current_user.score %></p>
-            <% end %>
-            <%= link_to "Home", root_path, class: "dropdown-item" %>
-            <%= link_to "Perfil", edit_user_registration_path, class: "dropdown-item" %>
-            <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item", data: { confirm: "Deseja sair?" } %>
-          <% end %>
-        </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <% if user_signed_in? %>
+        <% unless current_user.teacher %>
+          <p class="dropdown-item m-0">Pontos: <%= current_user.score %></p>
+        <% end %>
+        <!-- Use a classe "navbar-nav" para agrupar os links da barra de navegação -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- Link para a página inicial -->
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link" %>
+          </li>
+          <!-- Link para o perfil do usuário -->
+          <li class="nav-item">
+            <%= link_to "Perfil", edit_user_registration_path, class: "nav-link" %>
+          </li>
+          <!-- Link para sair da sessão -->
+          <li class="nav-item">
+            <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "nav-link", data: { confirm: "Deseja sair?" } %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</nav>
       </div>
     </div>
   <% end %>
